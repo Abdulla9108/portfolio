@@ -27,16 +27,16 @@ const getCameraKeyframes = () => {
             fov: isMobile ? 55 : 35,
         },
         {
-            // Experience - Move squarely in front of monitor
-            position: { x: 0, y: isMobile ? 3.8 : 3.1, z: isMobile ? 4.2 : 1.2 },
-            lookAt: { x: 0, y: 3.1, z: -1.2 },
-            fov: isMobile ? 60 : 45,
+            // Experience
+            position: { x: isMobile ? 2.2 : 0, y: isMobile ? 4.5 : 3.1, z: isMobile ? 0.6 : 1.2 },
+            lookAt: { x: isMobile ? 2.2 : 0, y: isMobile ? 2.126 : 3.1, z: isMobile ? 0.4 : -1.2 },
+            fov: isMobile ? 55 : 45,
         },
         {
-            // Projects - Stay at monitor, but we will scroll the internal div
-            position: { x: 0, y: isMobile ? 3.8 : 3.1, z: isMobile ? 4.2 : 1.2 },
-            lookAt: { x: 0, y: 3.1, z: -1.2 },
-            fov: isMobile ? 60 : 45,
+            // Projects
+            position: { x: isMobile ? 2.2 : 0, y: isMobile ? 4.5 : 3.1, z: isMobile ? 0.6 : 1.2 },
+            lookAt: { x: isMobile ? 2.2 : 0, y: isMobile ? 2.126 : 3.1, z: isMobile ? 0.4 : -1.2 },
+            fov: isMobile ? 55 : 45,
         },
         {
             // Skills - Zoom in on the clustered sticky notes
@@ -89,7 +89,7 @@ export class ScrollAnimator {
                 trigger: '.scroll-container',
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: 1, // Smooth scrub
+                scrub: 2.5, // Increased for smoother, heavier, slower animation
                 invalidateOnRefresh: true // Re-evaluate functional values on resize
             }
         });
@@ -138,17 +138,34 @@ export class ScrollAnimator {
             );
 
             // If we are transitioning from Experience (i=3) to Projects (i=4)
+            // If we are transitioning from Experience (i=3) to Projects (i=4)
             if (i === 3) {
+                // Monitor Scrolling (Desktop)
                 this.masterTimeline.to(
                     '.monitor-scroll-wrapper',
                     {
                         y: () => {
                             const wrapper = document.querySelector('.monitor-scroll-wrapper');
                             const container = document.querySelector('.monitor-body');
-                            if (!wrapper || !container) return -600;
-                            // Calculate how far we need to translate up to show the bottom
+                            if (!wrapper || !container) return 0;
                             const maxScroll = wrapper.scrollHeight - container.clientHeight;
-                            // Add 50px padding at the bottom for breathing room
+                            return -Math.max(0, maxScroll + 50);
+                        },
+                        duration: duration,
+                        ease: 'power1.inOut',
+                    },
+                    i * duration
+                );
+
+                // Phone Scrolling (Mobile)
+                this.masterTimeline.to(
+                    '.phone-scroll-wrapper',
+                    {
+                        y: () => {
+                            const wrapper = document.querySelector('.phone-scroll-wrapper');
+                            const container = document.querySelector('.phone-ui'); // phone-ui is the container
+                            if (!wrapper || !container) return 0;
+                            const maxScroll = wrapper.scrollHeight - container.clientHeight;
                             return -Math.max(0, maxScroll + 50);
                         },
                         duration: duration,
@@ -157,7 +174,9 @@ export class ScrollAnimator {
                     i * duration
                 );
             } else if (i === 4) {
-                // Return monitor to top if we scroll back from Skills (i=4 to i=5)
+                // Return to top if we scroll back from Skills (i=4 to i=5)
+                this.masterTimeline.to('.monitor-scroll-wrapper', { y: 0, duration: duration, ease: 'power1.inOut' }, i * duration);
+                this.masterTimeline.to('.phone-scroll-wrapper', { y: 0, duration: duration, ease: 'power1.inOut' }, i * duration);
                 // Wait, if we move forward, the wrapper stays up unless we reset it?
                 // GSAP timeline maintains state. If we don't animate it, it stays at -480.
                 // But if they scroll backwards past Experience, does it reset?

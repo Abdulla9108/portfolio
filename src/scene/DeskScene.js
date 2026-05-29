@@ -9,6 +9,7 @@ import { createPlant } from './objects/Plant.js';
 import { createBooks } from './objects/Books.js';
 import { createClipboard } from './objects/Clipboard.js';
 import { createLighting } from './objects/Lighting.js';
+import { createPhone } from './objects/Phone.js';
 
 export class DeskScene {
     constructor(canvas) {
@@ -192,6 +193,7 @@ export class DeskScene {
         this.objects.books = createBooks(this.scene);
         this.objects.clipboard = createClipboard(this.scene);
         this.objects.lighting = createLighting(this.scene);
+        this.objects.phone = createPhone(this.scene);
     }
 
     handleResize() {

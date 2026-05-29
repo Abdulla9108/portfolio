@@ -41,6 +41,10 @@ class App {
         // Initialize interactions (click/hover on 3D objects)
         this.interactions = new Interactions(this.deskScene, this.scrollAnimator);
 
+        // Phone Content Setup
+        this.initPhoneContent();
+        window.addEventListener('resize', () => this.initPhoneContent());
+
         // Initialize UI
         initTypingAnimation();
         initCountAnimation();
@@ -64,8 +68,39 @@ class App {
             this.interactions.update();
         }
 
-        // Render
+        // Render scene
         this.deskScene.render();
+    }
+
+    initPhoneContent() {
+        const isMobile = window.innerWidth <= 768;
+        const phoneDOM = document.getElementById('phone-content');
+        const monitorDOM = document.getElementById('monitor-content');
+        const experienceContent = document.getElementById('experience-content');
+
+        // Note: Projects doesn't have a specific wrapper right now, it's siblings with Experience.
+        // Let's grab all children of monitor-scroll-wrapper that aren't the h2. 
+        // Actually, experience.sh has everything inside monitor-scroll-wrapper.
+        
+        if (isMobile && phoneDOM && monitorDOM) {
+            const monitorBody = monitorDOM.querySelector('.monitor-scroll-wrapper');
+            const phoneBody = phoneDOM.querySelector('.phone-scroll-wrapper');
+            if (monitorBody && phoneBody && monitorBody.children.length > 0) {
+                // Move everything from monitor wrapper to phone
+                while(monitorBody.firstChild) {
+                    phoneBody.appendChild(monitorBody.firstChild);
+                }
+            }
+        } else if (!isMobile && phoneDOM && monitorDOM) {
+            const monitorBody = monitorDOM.querySelector('.monitor-scroll-wrapper');
+            const phoneBody = phoneDOM.querySelector('.phone-scroll-wrapper');
+            if (monitorBody && phoneBody && phoneBody.children.length > 0) {
+                // Move everything from phone back to monitor
+                while(phoneBody.firstChild) {
+                    monitorBody.appendChild(phoneBody.firstChild);
+                }
+            }
+        }
     }
 }
 
