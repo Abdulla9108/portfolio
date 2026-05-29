@@ -8,9 +8,10 @@ export function createNotebook(scene) {
     // Masking material for paper
     const paperMaskMat = new THREE.MeshBasicMaterial({
         color: 0x000000,
-        blending: THREE.NoBlending,
-        opacity: 0,
-        transparent: true,
+        blending: THREE.CustomBlending,
+        blendEquation: THREE.AddEquation,
+        blendSrc: THREE.ZeroFactor,
+        blendDst: THREE.ZeroFactor,
         side: THREE.DoubleSide,
     });
 

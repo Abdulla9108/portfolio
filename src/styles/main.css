@@ -52,11 +52,17 @@ body {
     pointer-events: none; /* Only scroll events pass through */
 }
 
+html {
+    scroll-snap-type: y mandatory;
+}
+
 .scroll-section {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 /* --- Hero Overlay (The only traditional overlay) --- */
@@ -422,10 +428,5 @@ body {
     .clipboard-ui .contact-label { font-size: 18px !important; }
     .clipboard-ui .contact-icon { font-size: 28px !important; width: 40px !important; }
     .clipboard-ui .contact-footer { font-size: 18px !important; margin-top: 30px !important; }
-
-    /* Fix scrolling sensitivity on mobile by making the scroll area taller */
-    .scroll-section {
-        height: 150vh;
-    }
 }
 

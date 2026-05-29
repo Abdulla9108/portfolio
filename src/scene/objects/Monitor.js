@@ -9,9 +9,10 @@ export function createMonitor(scene) {
     const screenGeo = new THREE.BoxGeometry(2.6, 1.6, 0.08);
     const screenMat = new THREE.MeshBasicMaterial({
         color: 0x000000,
-        blending: THREE.NoBlending,
-        opacity: 0,
-        transparent: true,
+        blending: THREE.CustomBlending,
+        blendEquation: THREE.AddEquation,
+        blendSrc: THREE.ZeroFactor,
+        blendDst: THREE.ZeroFactor,
         side: THREE.DoubleSide
     });
     const screen = new THREE.Mesh(screenGeo, screenMat);

@@ -23,9 +23,11 @@ export function createClipboard(scene) {
     const paperGeo = new THREE.PlaneGeometry(0.96, 1.32);
     const paperMaskMat = new THREE.MeshBasicMaterial({
         color: 0x000000,
-        blending: THREE.NoBlending,
-        opacity: 0,
-        transparent: true
+        blending: THREE.CustomBlending,
+        blendEquation: THREE.AddEquation,
+        blendSrc: THREE.ZeroFactor,
+        blendDst: THREE.ZeroFactor,
+        side: THREE.DoubleSide
     });
     const paper = new THREE.Mesh(paperGeo, paperMaskMat);
     paper.position.set(0, 2.145, 0.05); // Raised slightly to prevent flickering with board at 2.14

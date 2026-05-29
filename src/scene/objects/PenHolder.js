@@ -45,9 +45,11 @@ export function createPenHolder(scene) {
 
     const stickyMaskMat = new THREE.MeshBasicMaterial({
         color: 0x000000,
-        blending: THREE.NoBlending,
-        opacity: 0,
-        transparent: true
+        blending: THREE.CustomBlending,
+        blendEquation: THREE.AddEquation,
+        blendSrc: THREE.ZeroFactor,
+        blendDst: THREE.ZeroFactor,
+        side: THREE.DoubleSide
     });
 
     for(let i = 1; i <= 5; i++) {
