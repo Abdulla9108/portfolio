@@ -53,8 +53,8 @@ export function createPenHolder(scene) {
     });
 
     for(let i = 1; i <= 5; i++) {
-        // Mask
-        const stickyGeo = new THREE.PlaneGeometry(0.5, 0.5);
+        // Mask (0.44 matches 220px CSS width exactly, preventing black borders)
+        const stickyGeo = new THREE.PlaneGeometry(0.44, 0.44);
         const sticky = new THREE.Mesh(stickyGeo, stickyMaskMat);
         sticky.position.set(...stickyPositions[i-1]);
         sticky.rotation.order = 'ZYX';

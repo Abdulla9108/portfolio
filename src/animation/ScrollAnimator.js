@@ -16,15 +16,15 @@ const getCameraKeyframes = () => {
         },
         {
             // About Part 1 - Left Page (or full notebook on desktop)
-            position: { x: isMobile ? -3.1 : -2.5, y: isMobile ? 5.5 : 4.5, z: isMobile ? 1.5 : 0.3 },
+            position: { x: isMobile ? -3.1 : -2.5, y: isMobile ? 5.5 : 4.5, z: isMobile ? 1.2 : 0.1 },
             lookAt: { x: isMobile ? -3.1 : -2.5, y: 2.1, z: 0.3 },
-            fov: isMobile ? 55 : 35,
+            fov: isMobile ? 55 : 30,
         },
         {
             // About Part 2 - Right Page (or full notebook on desktop)
-            position: { x: isMobile ? -1.9 : -2.5, y: isMobile ? 5.5 : 4.5, z: isMobile ? 1.5 : 0.3 },
+            position: { x: isMobile ? -1.9 : -2.5, y: isMobile ? 5.5 : 4.5, z: isMobile ? 1.2 : 0.1 },
             lookAt: { x: isMobile ? -1.9 : -2.5, y: 2.1, z: 0.3 },
-            fov: isMobile ? 55 : 35,
+            fov: isMobile ? 55 : 30,
         },
         {
             // Experience
@@ -89,7 +89,7 @@ export class ScrollAnimator {
                 trigger: '.scroll-container',
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: 1.5, // Reduced from 2.5 to speed up animation slightly
+                scrub: 1.0, // Back to 1.0 since we are using native CSS scroll snapping now
                 invalidateOnRefresh: true // Re-evaluate functional values on resize
             }
         });

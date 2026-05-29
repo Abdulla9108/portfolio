@@ -56,7 +56,7 @@ export function createPhone(scene) {
     // Place on the desk, below the keyboard! (z = 1.3)
     group.position.set(-0.6, 2.126, 1.3); 
     group.rotation.x = -Math.PI / 2; // Lay flat on desk
-    group.rotation.z = 0.1; // Slight angle
+    group.rotation.z = 0; // Perfectly straight
 
     scene.add(group);
     return group;
