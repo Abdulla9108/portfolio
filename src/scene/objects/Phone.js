@@ -42,7 +42,7 @@ export function createPhone(scene) {
         const cssObj = new CSS3DObject(phoneDOM);
         // Scale down to match WebGL units. If phone width is 360px CSS, 360 * 0.002 = 0.72 units.
         cssObj.scale.set(0.002, 0.002, 0.002);
-        cssObj.position.set(0, 0, 0.026); // Match mask position
+        cssObj.position.set(0, 0, 0.032); // Slightly in front of mask front face to guarantee it renders
         group.add(cssObj);
     }
 

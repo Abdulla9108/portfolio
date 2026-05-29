@@ -168,8 +168,8 @@ body {
 }
 
 @media (max-width: 768px) {
-    .monitor-ui { visibility: hidden !important; }
-    .phone-ui { visibility: visible !important; }
+    .monitor-ui { opacity: 0 !important; pointer-events: none !important; }
+    .phone-ui { opacity: 1 !important; pointer-events: auto !important; }
 }
 
 .monitor-header {
@@ -215,7 +215,8 @@ body {
     padding: 20px;
     box-sizing: border-box;
     /* By default (Desktop), Phone is hidden but keeps layout */
-    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
     flex-direction: column;
 }
 .phone-ui .monitor-header { display: none; } /* Hide mac dots */
