@@ -7,34 +7,31 @@ export function createLighting(scene) {
     const group = new THREE.Group();
     group.name = 'lighting';
 
-    // Ambient light (soft blueish)
-    const ambient = new THREE.AmbientLight(0x2a1a4e, 0.4);
-    scene.add(ambient);
+    // Hemisphere light for bright natural daylight bouncing
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.8);
+    hemiLight.color.setHSL(0.6, 0.1, 0.8);
+    hemiLight.groundColor.setHSL(0.095, 0.1, 0.75);
+    scene.add(hemiLight);
 
-    // Main directional light (key light from upper left)
-    const dirLight = new THREE.DirectionalLight(0xfff5e6, 0.8);
-    dirLight.position.set(-4, 8, 3);
+    // Main directional light (Sunlight coming from window)
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    dirLight.position.set(-6, 12, -4);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 2048;
     dirLight.shadow.mapSize.height = 2048;
     dirLight.shadow.camera.near = 0.5;
-    dirLight.shadow.camera.far = 20;
-    dirLight.shadow.camera.left = -6;
-    dirLight.shadow.camera.right = 6;
-    dirLight.shadow.camera.top = 6;
-    dirLight.shadow.camera.bottom = -6;
-    dirLight.shadow.bias = -0.001;
+    dirLight.shadow.camera.far = 30;
+    dirLight.shadow.camera.left = -10;
+    dirLight.shadow.camera.right = 10;
+    dirLight.shadow.camera.top = 10;
+    dirLight.shadow.camera.bottom = -10;
+    dirLight.shadow.bias = -0.0005;
     scene.add(dirLight);
 
-    // Fill light (soft purple from right)
-    const fillLight = new THREE.DirectionalLight(0x6644aa, 0.3);
-    fillLight.position.set(5, 5, 2);
+    // Soft fill light from the opposite side to soften shadows
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+    fillLight.position.set(5, 5, 5);
     scene.add(fillLight);
-
-    // Rim light from behind
-    const rimLight = new THREE.DirectionalLight(0x06b6d4, 0.2);
-    rimLight.position.set(0, 4, -5);
-    scene.add(rimLight);
 
     // Desk lamp model
     const lampGroup = new THREE.Group();
@@ -114,6 +111,6 @@ export function createLighting(scene) {
         group,
         lampLight,
         dirLight,
-        ambient,
+        hemiLight,
     };
 }
