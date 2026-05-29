@@ -14,6 +14,7 @@ export class AmbientAnimations {
 
         this.animateSteam(time);
         this.animateLeaves(time);
+        this.animateDust(time);
         this.animateMonitorGlow(time);
     }
 
@@ -47,6 +48,31 @@ export class AmbientAnimations {
                 child.rotation.z += Math.cos(time * 0.3 + child.id * 0.5) * 0.001;
             }
         });
+    }
+
+    animateDust(time) {
+        const dust = this.scene.getObjectByName('dustParticles');
+        if (!dust) return;
+
+        const positions = dust.geometry.attributes.position.array;
+        for (let i = 0; i < positions.length; i += 3) {
+            // Slow drift
+            positions[i] += Math.sin(time * 0.1 + i) * 0.001;
+            positions[i + 1] += Math.cos(time * 0.15 + i * 0.5) * 0.0005;
+            positions[i + 2] += Math.sin(time * 0.08 + i * 0.3) * 0.001;
+
+            // Wrap around bounds
+            if (positions[i] > 8) positions[i] = -8;
+            if (positions[i] < -8) positions[i] = 8;
+            if (positions[i + 1] > 8) positions[i + 1] = 0;
+            if (positions[i + 1] < 0) positions[i + 1] = 8;
+            if (positions[i + 2] > 6) positions[i + 2] = -6;
+            if (positions[i + 2] < -6) positions[i + 2] = 6;
+        }
+        dust.geometry.attributes.position.needsUpdate = true;
+
+        // Rotate slowly
+        dust.rotation.y = time * 0.01;
     }
 
     animateMonitorGlow(time) {

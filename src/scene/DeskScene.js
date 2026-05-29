@@ -77,35 +77,108 @@ export class DeskScene {
     }
 
     createEnvironment() {
-        // Ground plane that only catches shadows (transparent otherwise)
-        // This allows the 360 panoramic floor to show through seamlessly
+        // Ground plane (dark wood/carpet)
         const groundGeo = new THREE.PlaneGeometry(30, 30);
-        const groundMat = new THREE.ShadowMaterial({ opacity: 0.2 });
+        const groundMat = new THREE.MeshStandardMaterial({
+            color: 0x1a1518,
+            roughness: 0.9,
+            metalness: 0.05,
+        });
         const ground = new THREE.Mesh(groundGeo, groundMat);
         ground.rotation.x = -Math.PI / 2;
         ground.receiveShadow = true;
         this.scene.add(ground);
 
-        // 360 Room Skybox
-        const textureLoader = new THREE.TextureLoader();
-        const baseUrl = import.meta.env.BASE_URL; // Handles Vite base path automatically
-        const bgTexture = textureLoader.load(baseUrl + 'room-pano.png');
-        bgTexture.colorSpace = THREE.SRGBColorSpace;
-        
-        // SphereGeometry to wrap around the scene
-        const sphereGeo = new THREE.SphereGeometry(30, 60, 40);
-        // Invert the sphere geometry so we are on the inside
-        sphereGeo.scale(-1, 1, 1);
-        
-        const sphereMat = new THREE.MeshBasicMaterial({
-            map: bgTexture,
-            side: THREE.BackSide
+        // Room Walls
+        const wallMat = new THREE.MeshStandardMaterial({
+            color: 0x1c2331, // Deep navy blue for a cozy night vibe
+            roughness: 1.0,
         });
-        
-        const skybox = new THREE.Mesh(sphereGeo, sphereMat);
-        // Rotate the sphere so the room is oriented nicely around the desk
-        skybox.rotation.y = -Math.PI / 2; 
-        this.scene.add(skybox);
+
+        // Back Wall
+        const backWallGeo = new THREE.PlaneGeometry(30, 15);
+        const backWall = new THREE.Mesh(backWallGeo, wallMat);
+        backWall.position.set(0, 7.5, -5);
+        backWall.receiveShadow = true;
+        this.scene.add(backWall);
+
+        // Left Wall
+        const leftWallGeo = new THREE.PlaneGeometry(30, 15);
+        const leftWall = new THREE.Mesh(leftWallGeo, wallMat);
+        leftWall.position.set(-8, 7.5, 0);
+        leftWall.rotation.y = Math.PI / 2;
+        leftWall.receiveShadow = true;
+        this.scene.add(leftWall);
+
+        // Right Wall
+        const rightWall = new THREE.Mesh(leftWallGeo, wallMat);
+        rightWall.position.set(10, 7.5, 0);
+        rightWall.rotation.y = -Math.PI / 2;
+        rightWall.receiveShadow = true;
+        this.scene.add(rightWall);
+
+        this.createWindow();
+        this.dustParticles = this.createDustParticles();
+    }
+
+    createWindow() {
+        // Window Frame
+        const frameGeo = new THREE.BoxGeometry(4, 3, 0.2);
+        const frameMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0a, roughness: 0.8 });
+        const frame = new THREE.Mesh(frameGeo, frameMat);
+        frame.position.set(-3, 5, -4.9);
+        this.scene.add(frame);
+
+        // Window Glass / Night Sky Glow
+        const glassGeo = new THREE.PlaneGeometry(3.6, 2.6);
+        const glassMat = new THREE.MeshBasicMaterial({ 
+            color: 0x243447, // Soft night sky blue
+        });
+        const glass = new THREE.Mesh(glassGeo, glassMat);
+        glass.position.set(-3, 5, -4.8);
+        this.scene.add(glass);
+
+        // Moonlight streaming in
+        const moonLight = new THREE.SpotLight(0x8da4d6, 2.5);
+        moonLight.position.set(-3, 5, -4.7);
+        moonLight.angle = Math.PI / 3;
+        moonLight.penumbra = 0.8;
+        moonLight.decay = 2;
+        moonLight.distance = 25;
+        moonLight.target.position.set(0, 1, 0);
+        this.scene.add(moonLight);
+        this.scene.add(moonLight.target);
+    }
+
+    createDustParticles() {
+        const count = 250;
+        const positions = new Float32Array(count * 3);
+        const sizes = new Float32Array(count);
+
+        for (let i = 0; i < count; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 16;
+            positions[i * 3 + 1] = Math.random() * 8;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 12;
+            sizes[i] = Math.random() * 2 + 0.5;
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+        const material = new THREE.PointsMaterial({
+            color: 0xffd700, // Warm gold dust motes
+            size: 0.04,
+            transparent: true,
+            opacity: 0.25,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        particles.name = 'dustParticles';
+        this.scene.add(particles);
+        return particles;
     }
 
     createDeskObjects() {
