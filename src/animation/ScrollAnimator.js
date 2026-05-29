@@ -90,6 +90,7 @@ export class ScrollAnimator {
                 start: 'top top',
                 end: 'bottom bottom',
                 scrub: 1, // Smooth scrub
+                invalidateOnRefresh: true // Re-evaluate functional values on resize
             }
         });
 
@@ -141,7 +142,15 @@ export class ScrollAnimator {
                 this.masterTimeline.to(
                     '.monitor-scroll-wrapper',
                     {
-                        y: -480, // Scroll down the monitor content
+                        y: () => {
+                            const wrapper = document.querySelector('.monitor-scroll-wrapper');
+                            const container = document.querySelector('.monitor-body');
+                            if (!wrapper || !container) return -600;
+                            // Calculate how far we need to translate up to show the bottom
+                            const maxScroll = wrapper.scrollHeight - container.clientHeight;
+                            // Add 50px padding at the bottom for breathing room
+                            return -Math.max(0, maxScroll + 50);
+                        },
                         duration: duration,
                         ease: 'power1.inOut',
                     },
