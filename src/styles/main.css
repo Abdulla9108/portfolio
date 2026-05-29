@@ -403,16 +403,16 @@ html {
     }
 
     /* 3D UI Mobile Overrides: Gentle scaling for readability without breaking layout */
-    .monitor-ui h2 { font-size: 32px !important; margin-bottom: 24px !important; }
-    .monitor-ui h3 { font-size: 24px !important; margin-bottom: 8px !important; }
-    .monitor-ui .company { font-size: 16px !important; margin-bottom: 12px !important; }
-    .monitor-ui p, .monitor-ui li { font-size: 18px !important; line-height: 1.6 !important; }
+    .monitor-ui h2 { font-size: 38px !important; margin-bottom: 24px !important; }
+    .monitor-ui h3 { font-size: 28px !important; margin-bottom: 8px !important; }
+    .monitor-ui .company { font-size: 18px !important; margin-bottom: 12px !important; }
+    .monitor-ui p, .monitor-ui li { font-size: 22px !important; line-height: 1.6 !important; }
     .monitor-ui ul { margin-left: 20px !important; margin-bottom: 30px !important; }
     
     .projects-grid { grid-template-columns: 1fr !important; gap: 20px !important; padding-bottom: 30px; }
-    .project-card h4 { font-size: 22px !important; margin-bottom: 8px !important; }
-    .project-card p { font-size: 16px !important; margin-bottom: 12px !important; }
-    .tags span { font-size: 14px !important; padding: 6px 12px !important; }
+    .project-card h4 { font-size: 26px !important; margin-bottom: 8px !important; }
+    .project-card p { font-size: 18px !important; margin-bottom: 12px !important; }
+    .tags span { font-size: 15px !important; padding: 6px 12px !important; }
 
     .notebook-ui h2 { font-size: 36px !important; margin-bottom: 16px !important; }
     .notebook-ui .handwritten-body { font-size: 18px !important; line-height: 1.6 !important; margin-bottom: 16px !important; }
@@ -420,13 +420,14 @@ html {
     .handwritten-list span { font-size: 16px !important; }
     .cert-list li { font-size: 18px !important; margin-bottom: 10px !important; }
 
-    .sticky-ui h3 { font-size: 26px !important; margin-bottom: 8px !important; }
-    .sticky-ui p { font-size: 18px !important; margin-bottom: 6px !important; }
+    .sticky-ui { padding: 8px !important; }
+    .sticky-ui h3 { font-size: 20px !important; margin-bottom: 4px !important; }
+    .sticky-ui p { font-size: 14px !important; margin-bottom: 2px !important; }
 
-    .clipboard-ui h2 { font-size: 48px !important; margin-bottom: 20px !important; }
-    .clipboard-ui .contact-text, .clipboard-ui .contact-number { font-size: 22px !important; }
-    .clipboard-ui .contact-label { font-size: 18px !important; }
-    .clipboard-ui .contact-icon { font-size: 28px !important; width: 40px !important; }
-    .clipboard-ui .contact-footer { font-size: 18px !important; margin-top: 30px !important; }
+    .clipboard-ui h2 { font-size: 42px !important; margin-bottom: 20px !important; }
+    .clipboard-ui .contact-text, .clipboard-ui .contact-number { font-size: 16px !important; }
+    .clipboard-ui .contact-label { font-size: 16px !important; }
+    .clipboard-ui .contact-icon { font-size: 24px !important; width: 36px !important; }
+    .clipboard-ui .contact-footer { font-size: 16px !important; margin-top: 30px !important; }
 }
 

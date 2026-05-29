@@ -76,7 +76,7 @@ export function createMonitor(scene) {
     // Mouse
     const mouseGeo = new THREE.BoxGeometry(0.25, 0.06, 0.4);
     const mouse = new THREE.Mesh(mouseGeo, kbMat);
-    mouse.position.set(1.6, 2.12, -0.2);
+    mouse.position.set(1.2, 2.12, -0.2); // Moved closer to keyboard to avoid overlapping sticky notes
     group.add(mouse);
 
     // Screen ambient light glow

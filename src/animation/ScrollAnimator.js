@@ -28,13 +28,13 @@ const getCameraKeyframes = () => {
         },
         {
             // Experience - Move squarely in front of monitor
-            position: { x: 0, y: isMobile ? 3.5 : 3.1, z: isMobile ? 3.0 : 1.2 },
+            position: { x: 0, y: isMobile ? 3.8 : 3.1, z: isMobile ? 4.2 : 1.2 },
             lookAt: { x: 0, y: 3.1, z: -1.2 },
             fov: isMobile ? 60 : 45,
         },
         {
             // Projects - Stay at monitor, but we will scroll the internal div
-            position: { x: 0, y: isMobile ? 3.5 : 3.1, z: isMobile ? 3.0 : 1.2 },
+            position: { x: 0, y: isMobile ? 3.8 : 3.1, z: isMobile ? 4.2 : 1.2 },
             lookAt: { x: 0, y: 3.1, z: -1.2 },
             fov: isMobile ? 60 : 45,
         },
