@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 // Adjusted camera keyframes to focus heavily on the text surfaces so it's readable
+// Adjusted camera keyframes to focus heavily on the text surfaces so it's readable
 const getCameraKeyframes = () => {
     const isMobile = window.innerWidth <= 768;
     return [
@@ -27,9 +28,15 @@ const getCameraKeyframes = () => {
         },
         {
             // Experience - Move squarely in front of monitor
-            position: { x: 0, y: isMobile ? 3.5 : 3.1, z: isMobile ? 3.0 : 1.8 },
+            position: { x: 0, y: isMobile ? 3.5 : 3.1, z: isMobile ? 3.0 : 1.2 },
             lookAt: { x: 0, y: 3.1, z: -1.2 },
-            fov: isMobile ? 65 : 50,
+            fov: isMobile ? 60 : 45,
+        },
+        {
+            // Projects - Stay at monitor, but we will scroll the internal div
+            position: { x: 0, y: isMobile ? 3.5 : 3.1, z: isMobile ? 3.0 : 1.2 },
+            lookAt: { x: 0, y: 3.1, z: -1.2 },
+            fov: isMobile ? 60 : 45,
         },
         {
             // Skills - Zoom in on the clustered sticky notes
@@ -128,6 +135,26 @@ export class ScrollAnimator {
                 },
                 i * duration
             );
+
+            // If we are transitioning from Experience (i=3) to Projects (i=4)
+            if (i === 3) {
+                this.masterTimeline.to(
+                    '.monitor-scroll-wrapper',
+                    {
+                        y: -480, // Scroll down the monitor content
+                        duration: duration,
+                        ease: 'power1.inOut',
+                    },
+                    i * duration
+                );
+            } else if (i === 4) {
+                // Return monitor to top if we scroll back from Skills (i=4 to i=5)
+                // Wait, if we move forward, the wrapper stays up unless we reset it?
+                // GSAP timeline maintains state. If we don't animate it, it stays at -480.
+                // But if they scroll backwards past Experience, does it reset?
+                // Yes, the timeline scrubs backwards seamlessly!
+                // But we don't need to do anything for i=4 because the timeline handles it.
+            }
         }
     }
 
