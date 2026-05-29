@@ -1,0 +1,68 @@
+--- Page 1 ---
+  – |
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+, , , , , 
+, ABDULLA  MOHAMMAD
+abdullamohammed1795@gmail.com +971529289158 Dubai, UAE LinkedIn
+PROFESSIONAL  SUMMAR Y
+AI & Machine Learning Engineer skilled in Python, TensorFlow , PyT orch, scikit-learn, MySQL, and data analysis. Experienced in
+developing ML  models, computer vision solutions, and end-to-end AI applications. Strong problem-solving and analytical abilities.
+Open to any opportunity and eager to learn.
+PROFESSIONAL  EXPERIENCE
+Intern – Novigo solutions Jul 2025 Aug 2025 Mangalore
+Engineered and implemented the Insurance App login module with MPIN authentication, applying full‑stack software
+engineering principles to ensure secure user access.
+Built a Boiler Temperature Monitoring system that sends automatic alerts when temperatures exceed 80°C, ensuring
+operational safety .
+Assisted in designing and implementing AI-driven application features for practical use cases.
+Gained hands-on experience in deploying AI solutions and integrating them with real-world applications.
+EDUCA TION
+PA College of Engineering – Mangalore Jan 2025
+Bachelor of Engineering (B.E.) in Artificial Intelligence and Machine Learning
+Centre for Development of Advanced Computing (CDAC) – Bangalore Jun 2025
+Certificate in Machine Learning
+Completed a 3 month course on machine learning fundamentals and built a project AQI prediction using deep learning models.
+Rooman T echnologies Pvt. Ltd. Feb 2025
+Cloud Application Developer Certificate
+Assisted in the design and development of cloud-based applications. Learned basics about Microsoft Azure and AWS.
+Cyber Security T raining Nov 2023
+Cyber Security Certificate
+Explored ethical hacking techniques to identify vulnerabilities in systems and applications.
+CER TIFICA TIONS
+Machine Learning Course – Centre for Development of Advanced Computing (CDAC), India
+Cloud Application Developer – Skill India
+Introduction to the Threat Landscape – Fortinet
+Cybersecurity Fundamentals – Fortinet
+Getting Started in Cybersecurity – Fortinet
+Introduction to Cybersecurity – Cisco
+Ethical Hacking
+Python Programming T raining – BOL T
+TECHNICAL  SKILLS
+Python: TensorFlow , PyT orch, scikit-learn Data Analysis MySQL Artificial Intelligence & Machine Learning Microsoft Excel Web
+development: HTML, CSS AI tool proficiency
+
+--- Page 2 ---
+, , PROJECTS
+AIR CANV AS
+Designed and implemented Air Canvas, a gesture-based drawing application using OpenCV , MediaPipe, and PyT orch, where
+analytical thinking and problem-solving were applied to overcome challenges in hand tracking precision and real-time
+rendering.
+CAR RENT AL DATABASE SYSTEM
+Web-based rental platform with MySQL  backend and responsive frontend using HTML, CSS, JavaScript.
+SMART STREET LIGHT SYSTEM
+Arduino-based IoT  solution optimizing energy usage via light and motion sensors.
+AQI PREDICTION USING MACHINE LEARNING
+Developed, optimized, and monitored a predictive model for real-time Air Quality Index monitoring using machine learning with
+TensorFlow , leveraging analytical skills to evaluate data trends and applying problem-solving techniques to optimize model
+accuracy and performance.
+LANGUAGES
+English (Fluent) Hindi (Fluent) Malayalam (Fluent)
+

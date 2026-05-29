@@ -1,0 +1,376 @@
+/* ============================================
+   3D PORTFOLIO — DIEGETIC UI STYLES
+   ============================================ */
+
+:root {
+    --color-bg: #0a0a12;
+    --color-primary: #8b5cf6;
+    --color-secondary: #06b6d4;
+    --gradient-main: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    
+    --font-primary: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-hand: 'Caveat', cursive;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--color-bg);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* --- Render Containers --- */
+#scene3d {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none; /* Let clicks pass to CSS3D if needed */
+}
+
+#css3d-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2; /* Put CSS3D above WebGL so it's clickable */
+}
+
+.scroll-container {
+    position: relative;
+    z-index: 3;
+    pointer-events: none; /* Only scroll events pass through */
+}
+
+.scroll-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Hero Overlay (The only traditional overlay) --- */
+.hero-overlay {
+    text-align: center;
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero-overlay.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-overlay h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.gradient-text {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-overlay .role {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    min-height: 2rem;
+}
+
+.scroll-hint {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: float 2s infinite ease-in-out;
+}
+
+.mouse {
+    width: 24px;
+    height: 36px;
+    border: 2px solid white;
+    border-radius: 12px;
+    position: relative;
+}
+.mouse::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 8px;
+    background: white;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 4px;
+    border-radius: 2px;
+    animation: scroll 1.5s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+@keyframes scroll {
+    0% { top: 4px; opacity: 1; }
+    100% { top: 16px; opacity: 0; }
+}
+
+/* ============================================
+   DIEGETIC PANELS (Projected in 3D)
+   ============================================ */
+
+/* These base styles apply to elements in #css3d-container */
+.diegetic-panel {
+    pointer-events: auto; /* Make them clickable in 3D */
+    backface-visibility: hidden;
+}
+
+/* --- Monitor UI (Code Editor Style) --- */
+.monitor-ui {
+    width: 1000px;
+    height: 600px;
+    background: rgba(20, 20, 30, 0.95);
+    color: #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: var(--font-mono);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #333;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+}
+
+.monitor-header {
+    background: #1a1a24;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.mac-dots { display: flex; gap: 8px; }
+.mac-dots span { width: 12px; height: 12px; border-radius: 50%; }
+.mac-dots span:nth-child(1) { background: #ff5f56; }
+.mac-dots span:nth-child(2) { background: #ffbd2e; }
+.mac-dots span:nth-child(3) { background: #27c93f; }
+
+.monitor-title {
+    margin: 0 auto;
+    color: #888;
+    font-size: 14px;
+}
+
+.monitor-body {
+    flex: 1;
+    padding: 30px 40px;
+    overflow-y: auto;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Custom Scrollbar for Monitor */
+.monitor-body::-webkit-scrollbar { width: 10px; }
+.monitor-body::-webkit-scrollbar-track { background: #1a1a24; }
+.monitor-body::-webkit-scrollbar-thumb { background: #444; border-radius: 5px; }
+
+.monitor-ui h2 { font-size: 28px; margin-bottom: 24px; color: #fff; }
+.monitor-ui h3 { color: var(--color-secondary); font-size: 20px; margin-bottom: 4px; }
+.monitor-ui .company { color: #888; margin-bottom: 12px; font-size: 14px; }
+.monitor-ui ul { margin-left: 20px; margin-bottom: 30px; color: #bbb; }
+.monitor-ui li { margin-bottom: 8px; }
+
+.timeline-item { margin-bottom: 30px; position: relative; padding-left: 20px; border-left: 2px solid #444; }
+.timeline-dot { position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; background: var(--color-primary); border-radius: 50%; }
+
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.project-card { background: #1a1a24; padding: 20px; border-radius: 8px; border: 1px solid #333; }
+.project-card h4 { color: var(--color-primary); font-size: 18px; margin-bottom: 8px; }
+.project-card p { color: #aaa; font-size: 14px; margin-bottom: 12px; }
+.tags { display: flex; gap: 8px; }
+.tags span { background: #2a2a3a; padding: 4px 8px; border-radius: 4px; font-size: 12px; color: var(--color-secondary); }
+
+/* --- Notebook UI (Paper Style) --- */
+.notebook-ui {
+    width: 480px;
+    height: 640px;
+    background: #f5f0e8; /* Solid paper color so it shows through the mask */
+    color: #111;
+    padding: 40px;
+    font-family: var(--font-primary);
+}
+
+.handwritten {
+    font-size: 32px;
+    font-weight: 800;
+    color: #000088; /* Pen ink color */
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.handwritten-body {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #222;
+    margin-bottom: 16px;
+}
+
+.handwritten-list {
+    list-style: none;
+}
+.handwritten-list li {
+    font-size: 15px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.handwritten-list strong { color: #000088; font-weight: 700; font-size: 17px; }
+.handwritten-list span { color: #444; font-size: 14px; font-weight: 500; margin-top: 2px; }
+
+/* --- Sticky Notes --- */
+.sticky-ui {
+    width: 200px;
+    height: 200px;
+    background: transparent;
+    color: #111;
+    padding: 20px;
+    font-family: var(--font-primary);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sticky-ui h3 { 
+    font-size: 22px; 
+    font-weight: 800;
+    border-bottom: 2px solid rgba(0,0,0,0.1); 
+    margin-bottom: 12px; 
+    padding-bottom: 6px;
+    color: #b71c1c; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.sticky-ui p { 
+    font-size: 15px; 
+    font-weight: 600;
+    line-height: 1.4; 
+    margin-bottom: 6px;
+}
+
+/* --- Clipboard UI (Contact Details) --- */
+.clipboard-ui {
+    width: 400px;
+    height: 550px;
+    background: #f5f0e8; /* Solid paper color */
+    color: #111;
+    padding: 30px;
+    font-family: var(--font-primary);
+}
+.clipboard-ui h2 { font-family: var(--font-hand); font-size: 40px; color: #000088; margin-bottom: 16px; }
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #111;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: rgba(0, 0, 136, 0.04);
+    border: 1px solid rgba(0, 0, 136, 0.1);
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer;
+}
+.contact-item:hover {
+    background: rgba(0, 0, 136, 0.12);
+    transform: translateX(4px);
+}
+
+.contact-icon {
+    font-size: 20px;
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.contact-text {
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 500;
+    color: #000088;
+    word-break: break-all;
+}
+
+.contact-label {
+    font-family: var(--font-primary);
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 40px;
+}
+
+.contact-number {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 500;
+    color: #111;
+    letter-spacing: 0.5px;
+}
+
+.contact-footer {
+    font-family: var(--font-hand);
+    font-size: 22px;
+    color: #666;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* --- Certificate List (compact) --- */
+.cert-list li {
+    font-size: 19px !important;
+    margin-bottom: 8px !important;
+}
+
+/* --- Loading & Nav (Keep existing) --- */
+.loading-screen { position: fixed; inset: 0; z-index: 10000; background: var(--color-bg); display: flex; align-items: center; justify-content: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
+.loading-screen.hidden { opacity: 0; visibility: hidden; }
+.loading-content { text-align: center; }
+.loading-logo { font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; }
+.loading-logo .logo-bracket { color: var(--color-primary); }
+.loading-text { font-family: var(--font-mono); font-size: 0.9rem; color: #999; margin-bottom: 2rem; }
+.loading-bar-container { width: 280px; height: 3px; background: rgba(139, 92, 246, 0.1); border-radius: 4px; margin: 0 auto 2rem; }
+.loading-bar { height: 100%; width: 0%; background: var(--gradient-main); transition: width 0.3s; }
+.enter-btn { display: none; padding: 14px 40px; background: transparent; border: 1px solid var(--color-primary); color: white; font-size: 1rem; border-radius: 28px; cursor: pointer; }
+.enter-btn.visible { display: inline-block; }
+
+.dot-nav { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 20px; pointer-events: auto; }
+.dot-nav-item { background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+.dot-nav-item .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: all 0.2s; }
+.dot-nav-item.active .dot { background: var(--color-primary); transform: scale(1.3); }
+.dot-label { color: white; background: rgba(0,0,0,0.8); padding: 4px 12px; border-radius: 4px; opacity: 0; transform: translateX(8px); transition: all 0.2s; }
+.dot-nav-item:hover .dot-label { opacity: 1; transform: translateX(0); }

@@ -3,815 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulla Mohammad – AI & Automation Engineer Portfolio</title>
-    <meta name="description" content="Portfolio of Abdulla Mohammad – AI & Machine Learning Engineer specializing in AI automation, full-stack development, and intelligent solutions.">
+    <title>Abdulla Mohammad – AI & Full-Stack Developer</title>
+    <meta name="description" content="Interactive 3D portfolio of Abdulla Mohammad">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Cursor glow -->
-    <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- Particle canvas -->
-    <canvas id="particles"></canvas>
-
-    <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <a href="#hero" class="nav-logo">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
                 <span class="logo-bracket">&lt;</span>AM<span class="logo-bracket"> /&gt;</span>
-            </a>
-            <div class="nav-links" id="navLinks">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <a href="#contact" class="nav-cta">Let's Talk</a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="loading-text">Building workspace...</div>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loadingBar"></div>
+            </div>
+            <button class="enter-btn" id="enterBtn">Enter Portfolio</button>
         </div>
-    </nav>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#about" class="mobile-link">About</a>
-        <a href="#experience" class="mobile-link">Experience</a>
-        <a href="#projects" class="mobile-link">Projects</a>
-        <a href="#skills" class="mobile-link">Skills</a>
-        <a href="#education" class="mobile-link">Education</a>
-        <a href="#contact" class="mobile-link">Contact</a>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-bg-image"></div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                Available for opportunities
+    <!-- 3D Renderers -->
+    <div id="css3d-container"></div>
+    <canvas id="scene3d"></canvas>
+
+    <!-- Source HTML for CSS3D Objects (Hidden from normal DOM layout) -->
+    <div id="diegetic-ui-source" style="display: none;">
+        
+        <!-- Monitor Screen Content -->
+        <div id="monitor-content" class="diegetic-panel monitor-ui">
+            <div class="monitor-header">
+                <div class="mac-dots"><span></span><span></span><span></span></div>
+                <div class="monitor-title">~/portfolio/experience.sh</div>
             </div>
-            <h1 class="hero-name">
-                <span class="hero-greeting">Hi, I'm</span>
-                <span class="hero-title-name">Abdulla <span class="gradient-text">Mohammad</span></span>
-            </h1>
-            <div class="hero-role">
-                <span class="typing-text" id="typingText"></span>
-                <span class="typing-cursor">|</span>
+            <div class="monitor-body">
+                <h2>Work <span class="gradient-text">Experience</span></h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Freelance AI & Web Developer</h3>
+                            <p class="company">Independent Consultant | May 2026 - Present</p>
+                            <ul>
+                                <li>Built complete, responsive web apps for independent clients.</li>
+                                <li>Architecting "AI Resume Builder" SaaS leveraging LLMs.</li>
+                                <li>Consulting on AI integrations and business automation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>AI Automation Engineer</h3>
+                            <p class="company">Outstandr - Dubai | Dec 2025 - Apr 2026</p>
+                            <ul>
+                                <li>Deployed leadersperformance.ae coaching website.</li>
+                                <li>Designed n8n, GoHighLevel & Python workflows.</li>
+                                <li>Developed AI voice agents via ElevenLabs.</li>
+                                <li>Built "Lionel X" React Native mobile app.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Software Engineering Intern</h3>
+                            <p class="company">Novigo Solutions | Jul 2025 - Aug 2025</p>
+                            <ul>
+                                <li>Engineered Insurance App MPIN authentication.</li>
+                                <li>Built IoT Boiler Temperature Monitor.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 40px;">Featured <span class="gradient-text">Projects</span></h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4>Air Canvas</h4>
+                        <p>Gesture-based drawing app with real-time hand tracking precision.</p>
+                        <div class="tags"><span>OpenCV</span><span>PyTorch</span><span>MediaPipe</span></div>
+                    </div>
+                    <div class="project-card">
+                        <h4>Car Rental System</h4>
+                        <p>Web-based platform with robust backend and responsive frontend.</p>
+                        <div class="tags"><span>MySQL</span><span>HTML/CSS/JS</span></div>
+                    </div>
+                    <div class="project-card">
+                        <h4>Smart Street Light</h4>
+                        <p>Arduino-based IoT solution optimizing energy via light & motion sensors.</p>
+                        <div class="tags"><span>Arduino</span><span>IoT</span><span>Sensors</span></div>
+                    </div>
+                    <div class="project-card">
+                        <h4>AQI Prediction ML</h4>
+                        <p>Predictive model for real-time Air Quality Index monitoring.</p>
+                        <div class="tags"><span>TensorFlow</span><span>Machine Learning</span></div>
+                    </div>
+                </div>
             </div>
-            <p class="hero-description">
-                AI & Machine Learning Engineer crafting intelligent solutions – from automation workflows 
-                and voice agents to full-stack applications. Based in <span class="highlight">Mangalore, India</span> · Open to relocate anywhere.
+        </div>
+
+        <!-- Notebook Left Page (About) -->
+        <div id="notebook-left" class="diegetic-panel notebook-ui">
+            <h2 class="handwritten">About Me</h2>
+            <p class="handwritten-body">
+                I'm a <strong>Freelance AI & Full-Stack Developer</strong> from Mangalore, India, passionate about building intelligent, real-world solutions. 
             </p>
-            <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                    View Projects
+            <p class="handwritten-body">
+                My journey spans from training ML models to deploying end-to-end full-stack applications and AI voice agents.
+            </p>
+            <p class="handwritten-body">
+                I thrive at the intersection of AI innovation and practical software engineering. Open to relocate anywhere!
+            </p>
+        </div>
+
+        <!-- Notebook Right Page (Education) -->
+        <div id="notebook-right" class="diegetic-panel notebook-ui">
+            <h2 class="handwritten">Education</h2>
+            <ul class="handwritten-list">
+                <li>
+                    <strong>B.E. AI & Machine Learning</strong>
+                    <span>PA College of Engineering (2025)</span>
+                </li>
+                <li>
+                    <strong>Machine Learning Cert.</strong>
+                    <span>CDAC Bangalore (2025)</span>
+                </li>
+                <li>
+                    <strong>Cloud App Developer</strong>
+                    <span>Rooman Tech / Skill India</span>
+                </li>
+            </ul>
+            <h2 class="handwritten" style="margin-top: 16px;">Certificates</h2>
+            <ul class="handwritten-list cert-list">
+                <li>Machine Learning – CDAC</li>
+                <li>Cloud App Developer – Skill India</li>
+                <li>Intro to Threat Landscape – Fortinet</li>
+                <li>Cybersecurity Fundamentals – Fortinet</li>
+                <li>Getting Started in Cybersecurity – Fortinet</li>
+                <li>Intro to Cybersecurity – Cisco</li>
+                <li>Ethical Hacking</li>
+                <li>Python Programming – BOLT</li>
+            </ul>
+        </div>
+
+        <!-- Sticky Notes (Skills) -->
+        <div id="sticky-1" class="diegetic-panel sticky-ui">
+            <h3>AI / ML</h3>
+            <p>TensorFlow, PyTorch</p>
+            <p>scikit-learn, OpenCV</p>
+            <p>MediaPipe, Deep Learning</p>
+        </div>
+        <div id="sticky-2" class="diegetic-panel sticky-ui">
+            <h3>Automation</h3>
+            <p>n8n, GoHighLevel</p>
+            <p>ElevenLabs</p>
+            <p>Voice Agents</p>
+        </div>
+        <div id="sticky-3" class="diegetic-panel sticky-ui">
+            <h3>Dev</h3>
+            <p>Python, JavaScript</p>
+            <p>React Native, Next.js</p>
+            <p>HTML, CSS, SQL</p>
+        </div>
+        <div id="sticky-4" class="diegetic-panel sticky-ui">
+            <h3>Data & Tools</h3>
+            <p>MySQL, Data Analysis</p>
+            <p>Microsoft Excel</p>
+            <p>AI Tool Proficiency</p>
+        </div>
+        <div id="sticky-5" class="diegetic-panel sticky-ui">
+            <h3>Cloud & Sec</h3>
+            <p>Microsoft Azure</p>
+            <p>AWS, Cybersecurity</p>
+            <p>Ethical Hacking</p>
+        </div>
+
+        <!-- Clipboard (Contact Details) -->
+        <div id="clipboard-content" class="diegetic-panel clipboard-ui">
+            <h2>Let's Talk!</h2>
+            <div class="contact-details">
+                <a href="mailto:abdullamohammed1795@gmail.com" class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <span class="contact-text">abdullamohammed1795@gmail.com</span>
                 </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Get In Touch
+                <a href="tel:+919108618201" class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span class="contact-label">India</span>
+                    <span class="contact-number">+91 91086 18201</span>
                 </a>
-                <a href="Abdulla_Mohammad_Resume.pdf" class="btn btn-ghost" download>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Resume
+                <a href="tel:+971529289158" class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span class="contact-label">Dubai</span>
+                    <span class="contact-number">+971 529 289 158</span>
+                </a>
+                <a href="https://www.linkedin.com/in/abdulamohammad01" target="_blank" class="contact-item">
+                    <span class="contact-icon">in</span>
+                    <span class="contact-text">LinkedIn Profile</span>
                 </a>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number" data-count="5">0</span><span class="stat-plus">+</span>
-                    <span class="stat-label">Projects Built</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number" data-count="6">0</span><span class="stat-plus">+</span>
-                    <span class="stat-label">Certifications</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number" data-count="2">0</span>
-                    <span class="stat-label">Companies</span>
-                </div>
-            </div>
+            <p class="contact-footer">Dubai, UAE · Open to relocate</p>
         </div>
-        <div class="hero-scroll">
-            <div class="scroll-indicator">
-                <div class="scroll-dot"></div>
-            </div>
-            <span>Scroll to explore</span>
-        </div>
-    </section>
+    </div>
 
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">01</span>
-                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="about-grid">
-                <div class="about-image-col">
-                    <div class="about-image-wrapper">
-                        <img src="avatar.png" alt="Abdulla Mohammad" class="about-image">
-                        <div class="about-image-border"></div>
-                        <div class="about-image-glow"></div>
-                    </div>
-                </div>
-                <div class="about-text-col">
-                    <p class="about-intro">
-                        I'm an <span class="highlight">AI & Machine Learning Engineer</span> from Mangalore, India, with a 
-                        passion for building intelligent, real-world solutions. I graduated with a B.E. in Artificial 
-                        Intelligence and Machine Learning from PA College of Engineering, Mangalore. Open to relocate anywhere.
-                    </p>
-                    <p class="about-body">
-                        My journey spans from building machine learning models and computer vision applications to 
-                        creating end-to-end AI automation workflows, voice agents, and full-stack applications deployed 
-                        on both the App Store and Play Store. I thrive at the intersection of AI innovation and 
-                        practical engineering.
-                    </p>
-                    <p class="about-body">
-                        At <span class="highlight">Outstandr</span>, I've been hands-on with n8n workflows, GoHighLevel 
-                        automations, AI voice agents, and Python-based automation – turning complex business 
-                        requirements into seamless automated systems.
-                    </p>
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span>Mangalore, India · Open to relocate</span>
-                        </div>
-                        <div class="detail-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <span>abdullamohammed1795@gmail.com</span>
-                        </div>
-                        <div class="detail-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            <span>+91 91086 18201 · +971 52 928 9158</span>
-                        </div>
-                        <div class="detail-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                            <span>English · Hindi · Malayalam</span>
-                        </div>
-                    </div>
+    <!-- Scroll Container (drives GSAP, no visible content) -->
+    <div class="scroll-container" id="scrollContainer">
+        <section class="scroll-section" id="hero-section">
+            <div class="hero-overlay" id="heroOverlay">
+                <h1>Abdulla <span class="gradient-text">Mohammad</span></h1>
+                <p class="role" id="typingText"></p>
+                <div class="scroll-hint">
+                    <div class="mouse"></div>
+                    <span>Scroll</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <section class="scroll-section" id="about-section"></section>
+        <section class="scroll-section" id="experience-section"></section>
+        <section class="scroll-section" id="skills-section"></section>
+        <section class="scroll-section" id="contact-section"></section>
+    </div>
 
-    <!-- Experience Section -->
-    <section class="section section-alt" id="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">02</span>
-                <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="timeline">
-                <!-- Outstandr -->
-                <div class="timeline-item" data-reveal>
-                    <div class="timeline-dot">
-                        <div class="dot-ring"></div>
-                    </div>
-                    <div class="timeline-card glass-card">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">AI Automation Engineer</h3>
-                                <div class="timeline-company">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                                    Outstandr – AI Solutions Company, Dubai
-                                </div>
-                            </div>
-                            <div class="timeline-meta">
-                                <span class="timeline-date">Dec 2025 – Apr 2026</span>
-                                <span class="timeline-badge current">Current</span>
-                            </div>
-                        </div>
-                        <ul class="timeline-points">
-                            <li>Built and deployed <strong>leadersperformance.ae</strong> – a full-featured performance coaching website with AI-powered diagnostics and founder pressure scan tools.</li>
-                            <li>Designed and deployed AI automation workflows using <strong>n8n</strong>, <strong>GoHighLevel (GHL)</strong>, and <strong>Python</strong> for intelligent business process automation.</li>
-                            <li>Developed and integrated <strong>AI voice agents</strong> using ElevenLabs SDK for real-time conversational AI experiences.</li>
-                            <li>Built an end-to-end mobile application <strong>"Lionel X"</strong> and successfully deployed it on both the <strong>Apple App Store</strong> and <strong>Google Play Store</strong>.</li>
-                            <li>Created automated lead generation, CRM integrations, and client onboarding workflows.</li>
-                        </ul>
-                        <div class="timeline-tags">
-                            <span class="tag">n8n</span>
-                            <span class="tag">GoHighLevel</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">AI Voice Agents</span>
-                            <span class="tag">ElevenLabs</span>
-                            <span class="tag">React Native</span>
-                            <span class="tag">Supabase</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- Floating Dot Navigation -->
+    <nav class="dot-nav" id="dotNav">
+        <button class="dot-nav-item active" data-section="hero-section" aria-label="Hero"><span class="dot"></span><span class="dot-label">Home</span></button>
+        <button class="dot-nav-item" data-section="about-section" aria-label="About"><span class="dot"></span><span class="dot-label">About</span></button>
+        <button class="dot-nav-item" data-section="experience-section" aria-label="Experience"><span class="dot"></span><span class="dot-label">Experience</span></button>
+        <button class="dot-nav-item" data-section="skills-section" aria-label="Skills"><span class="dot"></span><span class="dot-label">Skills</span></button>
+        <button class="dot-nav-item" data-section="contact-section" aria-label="Contact"><span class="dot"></span><span class="dot-label">Contact</span></button>
+    </nav>
 
-                <!-- Novigo -->
-                <div class="timeline-item" data-reveal>
-                    <div class="timeline-dot">
-                        <div class="dot-ring"></div>
-                    </div>
-                    <div class="timeline-card glass-card">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Software Engineering Intern</h3>
-                                <div class="timeline-company">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                                    Novigo Solutions – Mangalore
-                                </div>
-                            </div>
-                            <div class="timeline-meta">
-                                <span class="timeline-date">Jul 2025 – Aug 2025</span>
-                            </div>
-                        </div>
-                        <ul class="timeline-points">
-                            <li>Engineered the Insurance App login module with <strong>MPIN authentication</strong>, applying full-stack software engineering principles.</li>
-                            <li>Built a <strong>Boiler Temperature Monitoring</strong> system with automatic alerts when temperatures exceed 80°C.</li>
-                            <li>Assisted in designing and implementing AI-driven application features for practical use cases.</li>
-                            <li>Gained hands-on experience in deploying AI solutions and integrating them with real-world applications.</li>
-                        </ul>
-                        <div class="timeline-tags">
-                            <span class="tag">Full-Stack</span>
-                            <span class="tag">IoT</span>
-                            <span class="tag">AI Integration</span>
-                            <span class="tag">Python</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">03</span>
-                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-                <div class="section-line"></div>
-                <p class="section-subtitle">A selection of projects I've built – from production apps to AI experiments.</p>
-            </div>
-            <div class="projects-grid">
-
-                <!-- Lionel X App -->
-                <div class="project-card glass-card featured" data-reveal>
-                    <div class="project-preview lionelx-preview">
-                        <div class="preview-overlay">
-                            <div class="preview-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            </div>
-                        </div>
-                        <div class="app-mockup">
-                            <div class="phone-frame">
-                                <div class="phone-notch"></div>
-                                <div class="phone-screen">
-                                    <div class="app-header-mock">Lionel X</div>
-                                    <div class="app-avatar-mock"></div>
-                                    <div class="app-chat-mock">
-                                        <div class="chat-bubble ai">Hi! I'm Daisy, your AI coach</div>
-                                        <div class="chat-bubble user">Start my assessment</div>
-                                        <div class="chat-bubble ai">Let's begin your founder scan...</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-label">
-                            <span class="label-dot featured-dot"></span>
-                            Featured · Mobile App
-                        </div>
-                        <h3 class="project-title">Lionel X</h3>
-                        <p class="project-desc">End-to-end mobile application with AI coaching assistant, founder diagnostic scans, and voice-enabled AI conversation. Deployed on both Apple App Store and Google Play Store.</p>
-                        <div class="project-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Supabase</span>
-                            <span class="tag">ElevenLabs AI</span>
-                            <span class="tag">iOS</span>
-                            <span class="tag">Android</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://apps.apple.com/in/app/lionel-x/id6758130996" target="_blank" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                                App Store
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Leaders Performance -->
-                <div class="project-card glass-card" data-reveal>
-                    <div class="project-preview leaders-preview">
-                        <div class="preview-overlay">
-                            <div class="preview-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            </div>
-                        </div>
-                        <div class="website-mockup">
-                            <div class="browser-bar">
-                                <div class="browser-dots">
-                                    <span></span><span></span><span></span>
-                                </div>
-                                <div class="browser-url">leadersperformance.ae</div>
-                            </div>
-                            <div class="browser-content">
-                                <div class="web-hero-mock">
-                                    <div class="web-logo-mock">LP</div>
-                                    <div class="web-title-mock">Leaders Performance</div>
-                                    <div class="web-subtitle-mock">Founder Pressure Scan</div>
-                                    <div class="web-btn-mock">Start Assessment</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-label">
-                            <span class="label-dot"></span>
-                            Production · Web App
-                        </div>
-                        <h3 class="project-title">LeadersPerformance.ae</h3>
-                        <p class="project-desc">Full-featured performance coaching website with AI-powered founder diagnostics, multi-language support, interactive scan tools, and integrated AI assistant.</p>
-                        <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">AI Integration</span>
-                            <span class="tag">Multilingual</span>
-                            <span class="tag">GHL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://leadersperformance.ae" target="_blank" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                Live Site
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AI Automation Workflows -->
-                <div class="project-card glass-card" data-reveal>
-                    <div class="project-preview automation-preview">
-                        <div class="preview-overlay">
-                            <div class="preview-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            </div>
-                        </div>
-                        <div class="workflow-mockup">
-                            <div class="workflow-nodes">
-                                <div class="wf-node trigger">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>
-                                    Trigger
-                                </div>
-                                <div class="wf-line"></div>
-                                <div class="wf-node process">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                                    AI Process
-                                </div>
-                                <div class="wf-line"></div>
-                                <div class="wf-node action">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                    Action
-                                </div>
-                            </div>
-                            <div class="workflow-nodes row2">
-                                <div class="wf-node webhook">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                                    Webhook
-                                </div>
-                                <div class="wf-line"></div>
-                                <div class="wf-node gpt">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/></svg>
-                                    GPT
-                                </div>
-                                <div class="wf-line"></div>
-                                <div class="wf-node crm">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                                    CRM
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-label">
-                            <span class="label-dot"></span>
-                            Automation · AI
-                        </div>
-                        <h3 class="project-title">AI Automation Workflows</h3>
-                        <p class="project-desc">Designed and deployed intelligent automation pipelines using n8n, GoHighLevel, and Python – handling lead generation, CRM integrations, AI voice agents, and client onboarding.</p>
-                        <div class="project-tags">
-                            <span class="tag">n8n</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">GoHighLevel</span>
-                            <span class="tag">Voice AI</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Air Canvas -->
-                <div class="project-card glass-card" data-reveal>
-                    <div class="project-preview aircanvas-preview">
-                        <div class="preview-overlay">
-                            <div class="preview-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-                            </div>
-                        </div>
-                        <div class="canvas-mockup">
-                            <div class="canvas-hand">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.6)" stroke-width="1.5"><path d="M18 11V6a2 2 0 1 0-4 0v4M14 10V4a2 2 0 1 0-4 0v7m0 0l-2.3-2.3a2 2 0 0 0-2.83 2.83L10 17h6a4 4 0 0 0 4-4v-1a2 2 0 0 0-2-2h-2z"/></svg>
-                            </div>
-                            <svg class="canvas-drawing" viewBox="0 0 200 120">
-                                <path d="M 20 100 Q 40 20 80 60 T 140 30 T 180 80" fill="none" stroke="url(#drawGrad)" stroke-width="3" stroke-linecap="round" class="draw-path"/>
-                                <defs>
-                                    <linearGradient id="drawGrad" x1="0%" y1="0%" x2="100%">
-                                        <stop offset="0%" stop-color="#8b5cf6"/>
-                                        <stop offset="100%" stop-color="#06b6d4"/>
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-label">
-                            <span class="label-dot"></span>
-                            Computer Vision · ML
-                        </div>
-                        <h3 class="project-title">Air Canvas</h3>
-                        <p class="project-desc">Gesture-based drawing application using OpenCV, MediaPipe, and PyTorch for real-time hand tracking and rendering on a virtual canvas.</p>
-                        <div class="project-tags">
-                            <span class="tag">OpenCV</span>
-                            <span class="tag">MediaPipe</span>
-                            <span class="tag">PyTorch</span>
-                            <span class="tag">Python</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AQI Prediction -->
-                <div class="project-card glass-card" data-reveal>
-                    <div class="project-preview aqi-preview">
-                        <div class="preview-overlay">
-                            <div class="preview-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            </div>
-                        </div>
-                        <div class="chart-mockup">
-                            <div class="chart-header-mock">AQI Prediction</div>
-                            <svg class="chart-svg" viewBox="0 0 200 100">
-                                <defs>
-                                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="rgba(16,185,129,0.3)"/>
-                                        <stop offset="100%" stop-color="rgba(16,185,129,0)"/>
-                                    </linearGradient>
-                                </defs>
-                                <path d="M 0 80 Q 20 70 40 60 T 80 40 T 120 50 T 160 25 T 200 30 V 100 H 0 Z" fill="url(#chartGrad)"/>
-                                <path d="M 0 80 Q 20 70 40 60 T 80 40 T 120 50 T 160 25 T 200 30" fill="none" stroke="#10b981" stroke-width="2"/>
-                                <circle cx="160" cy="25" r="4" fill="#10b981" class="chart-dot"/>
-                            </svg>
-                            <div class="chart-labels">
-                                <span>Good</span>
-                                <span>Moderate</span>
-                                <span>Predicted ✓</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-label">
-                            <span class="label-dot"></span>
-                            Deep Learning · Data
-                        </div>
-                        <h3 class="project-title">AQI Prediction</h3>
-                        <p class="project-desc">Predictive model for real-time Air Quality Index monitoring using deep learning with TensorFlow, leveraging data trends analysis and model optimization.</p>
-                        <div class="project-tags">
-                            <span class="tag">TensorFlow</span>
-                            <span class="tag">Deep Learning</span>
-                            <span class="tag">Data Analysis</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Car Rental -->
-                <div class="project-card glass-card" data-reveal>
-                    <div class="project-preview rental-preview">
-                        <div class="preview-overlay">
-                            <div class="preview-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            </div>
-                        </div>
-                        <div class="website-mockup rental-mock">
-                            <div class="browser-bar">
-                                <div class="browser-dots">
-                                    <span></span><span></span><span></span>
-                                </div>
-                                <div class="browser-url">car-rental.app</div>
-                            </div>
-                            <div class="browser-content rental-content">
-                                <div class="rental-grid">
-                                    <div class="rental-card-mock">
-                                        <div class="car-icon">🚗</div>
-                                        <span>Sedan</span>
-                                    </div>
-                                    <div class="rental-card-mock">
-                                        <div class="car-icon">🚙</div>
-                                        <span>SUV</span>
-                                    </div>
-                                    <div class="rental-card-mock active">
-                                        <div class="car-icon">🏎️</div>
-                                        <span>Sports</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-label">
-                            <span class="label-dot"></span>
-                            Full-Stack · Database
-                        </div>
-                        <h3 class="project-title">Car Rental Database System</h3>
-                        <p class="project-desc">Web-based rental platform with MySQL backend and responsive frontend built with HTML, CSS, and JavaScript for managing vehicle inventory and bookings.</p>
-                        <div class="project-tags">
-                            <span class="tag">MySQL</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">HTML/CSS</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section section-alt" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">04</span>
-                <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category glass-card" data-reveal>
-                    <div class="skill-icon ai-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                    </div>
-                    <h3 class="skill-cat-title">AI & Machine Learning</h3>
-                    <div class="skill-items">
-                        <div class="skill-item"><span class="skill-dot"></span>TensorFlow</div>
-                        <div class="skill-item"><span class="skill-dot"></span>PyTorch</div>
-                        <div class="skill-item"><span class="skill-dot"></span>scikit-learn</div>
-                        <div class="skill-item"><span class="skill-dot"></span>OpenCV</div>
-                        <div class="skill-item"><span class="skill-dot"></span>MediaPipe</div>
-                        <div class="skill-item"><span class="skill-dot"></span>Computer Vision</div>
-                        <div class="skill-item"><span class="skill-dot"></span>Deep Learning</div>
-                        <div class="skill-item"><span class="skill-dot"></span>NLP</div>
-                    </div>
-                </div>
-                <div class="skill-category glass-card" data-reveal>
-                    <div class="skill-icon auto-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>
-                    </div>
-                    <h3 class="skill-cat-title">AI Automation</h3>
-                    <div class="skill-items">
-                        <div class="skill-item"><span class="skill-dot"></span>n8n</div>
-                        <div class="skill-item"><span class="skill-dot"></span>GoHighLevel</div>
-                        <div class="skill-item"><span class="skill-dot"></span>AI Voice Agents</div>
-                        <div class="skill-item"><span class="skill-dot"></span>ElevenLabs SDK</div>
-                        <div class="skill-item"><span class="skill-dot"></span>Workflow Design</div>
-                        <div class="skill-item"><span class="skill-dot"></span>CRM Integration</div>
-                        <div class="skill-item"><span class="skill-dot"></span>API Integration</div>
-                    </div>
-                </div>
-                <div class="skill-category glass-card" data-reveal>
-                    <div class="skill-icon dev-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    </div>
-                    <h3 class="skill-cat-title">Development</h3>
-                    <div class="skill-items">
-                        <div class="skill-item"><span class="skill-dot"></span>Python</div>
-                        <div class="skill-item"><span class="skill-dot"></span>JavaScript</div>
-                        <div class="skill-item"><span class="skill-dot"></span>React / React Native</div>
-                        <div class="skill-item"><span class="skill-dot"></span>Next.js</div>
-                        <div class="skill-item"><span class="skill-dot"></span>HTML / CSS</div>
-                        <div class="skill-item"><span class="skill-dot"></span>Supabase</div>
-                        <div class="skill-item"><span class="skill-dot"></span>MySQL</div>
-                    </div>
-                </div>
-                <div class="skill-category glass-card" data-reveal>
-                    <div class="skill-icon cloud-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-                    </div>
-                    <h3 class="skill-cat-title">Cloud & Tools</h3>
-                    <div class="skill-items">
-                        <div class="skill-item"><span class="skill-dot"></span>Microsoft Azure</div>
-                        <div class="skill-item"><span class="skill-dot"></span>AWS Basics</div>
-                        <div class="skill-item"><span class="skill-dot"></span>Git & GitHub</div>
-                        <div class="skill-item"><span class="skill-dot"></span>Arduino / IoT</div>
-                        <div class="skill-item"><span class="skill-dot"></span>Data Analysis</div>
-                        <div class="skill-item"><span class="skill-dot"></span>Microsoft Excel</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education & Certifications -->
-    <section class="section" id="education">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">05</span>
-                <h2 class="section-title">Education & <span class="gradient-text">Certifications</span></h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="edu-grid">
-                <!-- Education -->
-                <div class="edu-column">
-                    <h3 class="edu-col-title">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 6 3 6 3s3 0 6-3v-5"/></svg>
-                        Education
-                    </h3>
-                    <div class="edu-card glass-card" data-reveal>
-                        <div class="edu-year">2025</div>
-                        <h4 class="edu-title">B.E. in Artificial Intelligence & Machine Learning</h4>
-                        <p class="edu-school">PA College of Engineering – Mangalore</p>
-                    </div>
-                    <div class="edu-card glass-card" data-reveal>
-                        <div class="edu-year">2025</div>
-                        <h4 class="edu-title">Certificate in Machine Learning</h4>
-                        <p class="edu-school">CDAC – Bangalore</p>
-                        <p class="edu-detail">3-month intensive course. Built AQI prediction project using deep learning.</p>
-                    </div>
-                    <div class="edu-card glass-card" data-reveal>
-                        <div class="edu-year">2025</div>
-                        <h4 class="edu-title">Cloud Application Developer Certificate</h4>
-                        <p class="edu-school">Rooman Technologies / Skill India</p>
-                        <p class="edu-detail">Design and development of cloud-based applications. Azure & AWS.</p>
-                    </div>
-                </div>
-                <!-- Certifications -->
-                <div class="edu-column">
-                    <h3 class="edu-col-title">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-                        Certifications
-                    </h3>
-                    <div class="cert-list">
-                        <div class="cert-item glass-card" data-reveal>
-                            <div class="cert-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="cert-title">Machine Learning Course</h4>
-                                <p class="cert-issuer">CDAC, India</p>
-                            </div>
-                        </div>
-                        <div class="cert-item glass-card" data-reveal>
-                            <div class="cert-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="cert-title">Cloud Application Developer</h4>
-                                <p class="cert-issuer">Skill India</p>
-                            </div>
-                        </div>
-                        <div class="cert-item glass-card" data-reveal>
-                            <div class="cert-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="cert-title">Intro to the Threat Landscape</h4>
-                                <p class="cert-issuer">Fortinet</p>
-                            </div>
-                        </div>
-                        <div class="cert-item glass-card" data-reveal>
-                            <div class="cert-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="cert-title">Cybersecurity Fundamentals</h4>
-                                <p class="cert-issuer">Fortinet</p>
-                            </div>
-                        </div>
-                        <div class="cert-item glass-card" data-reveal>
-                            <div class="cert-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="cert-title">Introduction to Cybersecurity</h4>
-                                <p class="cert-issuer">Cisco</p>
-                            </div>
-                        </div>
-                        <div class="cert-item glass-card" data-reveal>
-                            <div class="cert-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="cert-title">Python Programming Training</h4>
-                                <p class="cert-issuer">BOLT</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section section-alt" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">06</span>
-                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-                <div class="section-line"></div>
-                <p class="section-subtitle">Have a project in mind or want to discuss opportunities? I'd love to hear from you.</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <a href="mailto:abdullamohammed1795@gmail.com" class="contact-card glass-card" data-reveal>
-                        <div class="contact-icon email-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>abdullamohammed1795@gmail.com</p>
-                        </div>
-                    </a>
-                    <a href="tel:+919108618201" class="contact-card glass-card" data-reveal>
-                        <div class="contact-icon phone-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        </div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+91 91086 18201 · +971 52 928 9158</p>
-                        </div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/abdullamohammad01" target="_blank" class="contact-card glass-card" data-reveal>
-                        <div class="contact-icon linkedin-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        </div>
-                        <div>
-                            <h4>LinkedIn</h4>
-                            <p>Connect with me</p>
-                        </div>
-                    </a>
-                    <div class="contact-card glass-card" data-reveal>
-                        <div class="contact-icon location-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Mangalore, India · Open to relocate</p>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form glass-card" id="contactForm" data-reveal>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="Project inquiry">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                        Send Message
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-inner">
-                <div class="footer-logo">
-                    <span class="logo-bracket">&lt;</span>AM<span class="logo-bracket"> /&gt;</span>
-                </div>
-                <p class="footer-text">Designed & built by Abdulla Mohammad © 2026</p>
-                <div class="footer-links">
-                    <a href="mailto:abdullamohammed1795@gmail.com" aria-label="Email">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/abdullamohammad01" target="_blank" aria-label="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>
