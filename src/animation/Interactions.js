@@ -29,21 +29,22 @@ export class Interactions {
     update() {
         // Find which section is currently most centered to update dots
         const sections = document.querySelectorAll('.scroll-section');
-        let currentIdx = 0;
+        let currentSectionId = 'hero-section';
         let minDistance = Infinity;
 
-        sections.forEach((sec, idx) => {
+        sections.forEach((sec) => {
             const rect = sec.getBoundingClientRect();
             const dist = Math.abs(rect.top);
             if (dist < minDistance) {
                 minDistance = dist;
-                currentIdx = idx;
+                // Map part2 to the main about section so the dot stays active
+                currentSectionId = sec.id === 'about-section-part2' ? 'about-section' : sec.id;
             }
         });
 
         const dots = document.querySelectorAll('.dot-nav-item');
-        dots.forEach((dot, idx) => {
-            if (idx === currentIdx) dot.classList.add('active');
+        dots.forEach((dot) => {
+            if (dot.dataset.section === currentSectionId) dot.classList.add('active');
             else dot.classList.remove('active');
         });
     }

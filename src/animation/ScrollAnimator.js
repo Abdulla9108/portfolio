@@ -14,9 +14,15 @@ const getCameraKeyframes = () => {
             fov: isMobile ? 65 : 45,
         },
         {
-            // About - Zoom tightly to notebook
-            position: { x: -2.5, y: isMobile ? 5.5 : 4.5, z: isMobile ? 1.5 : 0.3 },
-            lookAt: { x: -2.5, y: 2.1, z: 0.3 },
+            // About Part 1 - Left Page (or full notebook on desktop)
+            position: { x: isMobile ? -3.1 : -2.5, y: isMobile ? 5.5 : 4.5, z: isMobile ? 1.5 : 0.3 },
+            lookAt: { x: isMobile ? -3.1 : -2.5, y: 2.1, z: 0.3 },
+            fov: isMobile ? 55 : 35,
+        },
+        {
+            // About Part 2 - Right Page (or full notebook on desktop)
+            position: { x: isMobile ? -1.9 : -2.5, y: isMobile ? 5.5 : 4.5, z: isMobile ? 1.5 : 0.3 },
+            lookAt: { x: isMobile ? -1.9 : -2.5, y: 2.1, z: 0.3 },
             fov: isMobile ? 55 : 35,
         },
         {
