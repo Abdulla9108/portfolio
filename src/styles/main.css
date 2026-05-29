@@ -53,7 +53,7 @@ body {
 }
 
 .scroll-section {
-    height: 250vh; /* Increased from 100vh to slow down scrolling animation */
+    height: 150vh; /* Reduced from 250vh to speed up animation */
 }
 
 /* --- Hero Overlay (The only traditional overlay) --- */

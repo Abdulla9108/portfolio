@@ -28,14 +28,14 @@ const getCameraKeyframes = () => {
         },
         {
             // Experience
-            position: { x: isMobile ? 2.2 : 0, y: isMobile ? 4.5 : 3.1, z: isMobile ? 0.6 : 1.2 },
-            lookAt: { x: isMobile ? 2.2 : 0, y: isMobile ? 2.126 : 3.1, z: isMobile ? 0.4 : -1.2 },
+            position: { x: isMobile ? -0.6 : 0, y: isMobile ? 4.5 : 3.1, z: isMobile ? 1.5 : 1.2 },
+            lookAt: { x: isMobile ? -0.6 : 0, y: isMobile ? 2.126 : 3.1, z: isMobile ? 1.3 : -1.2 },
             fov: isMobile ? 55 : 45,
         },
         {
             // Projects
-            position: { x: isMobile ? 2.2 : 0, y: isMobile ? 4.5 : 3.1, z: isMobile ? 0.6 : 1.2 },
-            lookAt: { x: isMobile ? 2.2 : 0, y: isMobile ? 2.126 : 3.1, z: isMobile ? 0.4 : -1.2 },
+            position: { x: isMobile ? -0.6 : 0, y: isMobile ? 4.5 : 3.1, z: isMobile ? 1.5 : 1.2 },
+            lookAt: { x: isMobile ? -0.6 : 0, y: isMobile ? 2.126 : 3.1, z: isMobile ? 1.3 : -1.2 },
             fov: isMobile ? 55 : 45,
         },
         {
@@ -89,7 +89,7 @@ export class ScrollAnimator {
                 trigger: '.scroll-container',
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: 2.5, // Increased for smoother, heavier, slower animation
+                scrub: 1.5, // Reduced from 2.5 to speed up animation slightly
                 invalidateOnRefresh: true // Re-evaluate functional values on resize
             }
         });
